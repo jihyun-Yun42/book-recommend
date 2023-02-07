@@ -1,0 +1,62 @@
+.box1 {
+  width: 1000px;
+  height: 50px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  margin: auto;
+
+}
+.nicname {
+  width: 500px;
+  margin: 20px auto 20px 50px;
+  padding: 5px;
+}
+.nicname:hover {
+  border: 2px solid #afafaf;
+}
+a {
+  float: right;
+  margin-right: 50px;
+  margin-left: auto;
+  
+  text-decoration: none;
+  border: 1px solid #afafaf;
+  border-radius: 10px;
+  color: #afafaf;
+  padding: 2px 5px 2px 5px;
+}
+a:hover {
+  border: 1.5px solid #6c6c6c;
+  color: #6c6c6c;
+}
+
+.box2 {
+  width: 1000px;
+  height: 800px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.urlBoxIn {
+  width: 900px;
+  height: 40px;
+
+  margin: 10px auto 20px auto;
+}
+.urlBoxIn:hover {
+  border: 2px solid #afafaf;
+}
+.writeBox {
+  width: 900px;
+  height: 600px;
+
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.writeBox:hover {
+  border: 2px solid #afafaf;
+}
