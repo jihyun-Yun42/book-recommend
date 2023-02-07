@@ -6,10 +6,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>(가제)나의 책을 소개해줄게</title>
+  <input type="button" value="팝업창 호출" onclick="show_popup();"/>
+  
+  <script language="javascript">
+  function show_popup_write() {
+  window.open("write.html", "a", "width=1000, height=800, left=100, top=50");
+  }
+  </script>
 </head>
 
 <body>
-
+  <input type="button" value="글작성" onclick="show_popup_write();"/>
+  
 </body>
 
 </html>
