@@ -77,3 +77,6 @@ def mainpage_get():
 def join():
     sample_receive = request.form['sample_give']
     return jsonify({'msg': 'POST(기록) 연결 완료!'})
+
+if __name__ == '__main__':
+   app.run('0.0.0.0', port=5001, debug=True)
