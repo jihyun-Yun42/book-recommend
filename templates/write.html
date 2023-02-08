@@ -15,18 +15,28 @@
   <link rel="stylesheet" href="../static/write.css">
   <script>
     function post() {
-      let url = $('#urlBox').val()
+      let image = $('#image').val()
       let nicName = $('#nicName').val()
-      let comment = $('#nicName').val()
+      let comment = $('#comment').val()
+      let title = $('#title').val()
+      let author = $('#author').val()
+
       $.ajax({
           type: "POST",
           url: "/write",
-          data: {'url':url, 'niname':nicName, 'comment':comment},
+          data: {image: image, nicname:nicName, comment:comment, title:title, author:author},
           success: function (response) {
+            if(response['msgnot']){
+              alert(response['msgnot'])
+            } else {
               alert(response["msg"])
+              window.open('','_self').close();
+              opener.parent.location.reload();
+            }
           }
       });
     }
+
   </script>
 </head>
   
@@ -36,16 +46,17 @@
       <input type="text" placeholder="닉네임" class="nicname form-control" id="nicName">
     </div>
 
-    <a href={{ url_for('index') }} onclick="post()">작성하기</a>
+    <a onclick="post()">작성하기</a>
 
   </div>
 
   <div class="box2">
     <div class="urlBox">
-      <input type="url" class="urlBoxIn form-control" id="urlBox" placeholder="url">
+      <input type="url" class="urlBoxIn form-control" id="image" placeholder="이미지 url">
     </div>
-
-    <textarea class="writeBox form-control" placeholder="추천이유를 적어주세요" id="writeBox"></textarea>
+    <input type="url" class="urlBoxIn form-control" id="title" placeholder="책 이름">
+    <input type="url" class="urlBoxIn form-control" id="author" placeholder="저자">
+    <textarea class="writeBox form-control" placeholder="추천이유를 적어주세요" id="comment"></textarea>
 
   </div>
 
