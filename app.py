@@ -2,20 +2,39 @@ import urllib.request
 import certifi
 from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
+import datetime
+import jwt
+
+import hashlib
+
 SECRET_KEY = 'book'
 
 app = Flask(__name__)
 
+import requests
+from bs4 import BeautifulSoup
+
 # mongoDB연결코드
 ca = certifi.where()
 
-client = MongoClient('mongodb+srv://test:sparta@cluster0.ynnqkbk.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
+client = MongoClient('mongodb+srv://test:sparta@cluster0.ynnqkbk.mongodb.net/Cluster0?retryWrites=true&w=majority',
+                     tlsCAFile=ca)
 db = client.book_recommend
 
 
 @app.route('/')
 def home():
     return render_template('index.html')
+
+
+@app.route('/signup')
+def signin():
+    return render_template('sign-in.html')
+
+
+@app.route('/login')
+def login():
+    return render_template('login-.html')
 
 
 # 회원가입페이지
@@ -49,8 +68,7 @@ def api_register():
         return jsonify({'result': 'success'})
 
 
-
-#로그인
+# 로그인
 @app.route('/api/login', methods=['POST'])
 def api_login():
     id_receive = request.form['id_give']
@@ -85,28 +103,44 @@ def api_valid():
         return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
 
 
-        
-
 @app.route('/writepage')
 def writepage():
     return render_template('write.html')
 
 
+# 베스트셀러 크롤링
+url = 'http://www.yes24.com/main/default.aspx'
+res = requests.get(url)
+
+
+@app.route("/bestseller", methods=["GET"])
+def bestseller_get():
+    db.bestseller.delete_many({})
+
+    soup = BeautifulSoup(res.text, 'html.parser')
+    books = soup.select('li.tp02')
+
+    for book in books:
+        rank = book.select('strong')[0].text
+        title = book.select('strong')[1].text
+        author = book.select('em')[1].text
+        doc = {'rank': rank, 'title': title, 'author': author}
+        db.bestseller.insert_one(doc)
+    book_list = list(db.bestseller.find({}, {'_id': False}))
+    return jsonify({'bestseller': book_list})
+
+
 # 상세페이지 이동
-@app.route('/detail/<int:num>', methods=["GET"])
+@app.route('/detail/<num>')
 def detail(num):
-    title = db.write.find_one({'num':num})['title']
-    image = db.write.find_one({'num':num})['image']
-    comment = db.write.find_one({'num':num})['comment']
-    author = db.write.find_one({'num':num})['author']
-    nicname = db.write.find_one({'num':num})['nicname']
-    num = db.write.find_one({'num':num})['num']
-
-    return render_template('detailpage.html',num=num, title=title, image=image, comment=comment, author=author, nicname=nicname)
-
-
-
-
+    title = db.write.find_one({'num': num})['title']
+    image = db.write.find_one({'num': num})['image']
+    comment = db.write.find_one({'num': num})['comment']
+    author = db.write.find_one({'num': num})['author']
+    nicname = db.write.find_one({'num': num})['nicname']
+    num = db.write.find_one({'num': num})['num']
+    return render_template('detailpage.html', num=num, title=title, image=image, comment=comment, author=author,
+                           nicname=nicname)
 
 
 # 글작성 페이지
@@ -117,13 +151,10 @@ def write():
     image = request.form['image']
     title = request.form['title']
     author = request.form['author']
-    book_list = list(db.write.find({},{'_id':False}))
-    num = len(book_list) + 1
     if nicname == '' or comment == '':
         return jsonify({'msgnot': '내용을 입력해주세요'})
     else:
         doc = {
-            'num':num,
             'image': image,
             'comment': comment,
             'nicname': nicname,
@@ -135,8 +166,6 @@ def write():
 
 
 # 상세페이지
-
-
 @app.route("/detailpage", methods=["GET"])
 def detail_comments():
     comment_list = list(db.bookrec.find({}, {'_id': False}))
@@ -160,21 +189,23 @@ def detail_post():
 @app.route("/detailpage", methods=["DELETE"])
 def detail_delete():
     num = request.form['num']
-    db.write.delete_one({'num':int(num)})
+    db.write.delete_one({'num': int(num)})
     return jsonify({'msg': '삭제 완료!'})
 
 
 # 수정페이지로 이동
 @app.route('/updatepage/<int:num>')
 def updatepage(num):
-    title = db.write.find_one({'num':num})['title']
-    image = db.write.find_one({'num':num})['image']
-    comment = db.write.find_one({'num':num})['comment']
-    author = db.write.find_one({'num':num})['author']
-    nicname = db.write.find_one({'num':num})['nicname']
-    num = db.write.find_one({'num':num})['num']
+    title = db.write.find_one({'num': num})['title']
+    image = db.write.find_one({'num': num})['image']
+    comment = db.write.find_one({'num': num})['comment']
+    author = db.write.find_one({'num': num})['author']
+    nicname = db.write.find_one({'num': num})['nicname']
+    num = db.write.find_one({'num': num})['num']
 
-    return render_template('update.html',num=num, title=title, image=image, comment=comment, author=author, nicname=nicname)
+    return render_template('update.html', num=num, title=title, image=image, comment=comment, author=author,
+                           nicname=nicname)
+
 
 # 수정기능
 @app.route("/updatepage", methods=["PUT"])
@@ -186,11 +217,11 @@ def detail_edit():
     image = request.form['image']
     author = request.form['author']
 
-    db.write.update_one({'num':int(num)},{'$set':{'title':title}})
-    db.write.update_one({'num':int(num)},{'$set':{'nicname':nicname}})
-    db.write.update_one({'num':int(num)},{'$set':{'comment':comment}})
-    db.write.update_one({'num':int(num)},{'$set':{'image':image}})
-    db.write.update_one({'num':int(num)},{'$set':{'author':author}})
+    db.write.update_one({'num': int(num)}, {'$set': {'title': title}})
+    db.write.update_one({'num': int(num)}, {'$set': {'nicname': nicname}})
+    db.write.update_one({'num': int(num)}, {'$set': {'comment': comment}})
+    db.write.update_one({'num': int(num)}, {'$set': {'image': image}})
+    db.write.update_one({'num': int(num)}, {'$set': {'author': author}})
 
     return jsonify({'msg': '수정 완료!'})
 
@@ -206,12 +237,6 @@ def mainpage_login():
 def book_card_get():
     book_card = list(db.write.find({}, {'_id': False}))
     return jsonify({'book': book_card})
-
-
-@app.route("/mainpage/detail", methods=["POST"])
-def mainpage_detail():
-    user = db.users.find_one({'name': 'bobby'})
-    return jsonify({'msg': 'POST(기록) 연결 완료!'})
 
 
 # 회원가입페이지
@@ -241,4 +266,4 @@ def join():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5002, debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)
