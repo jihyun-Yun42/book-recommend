@@ -25,7 +25,7 @@ db = client.book_recommend
 @app.route('/')
 def home():
     return render_template('index.html')
-    
+
 @app.route('/signup')
 def signin():
     return render_template('sign-in.html')
@@ -135,7 +135,7 @@ def bestseller_get():
 
 
 # 상세페이지 이동
-@app.route('/detail/<num>')
+@app.route('/detail/<int:num>')
 def detail(num):
     title = db.write.find_one({'num':num})['title']
     image = db.write.find_one({'num':num})['image']
