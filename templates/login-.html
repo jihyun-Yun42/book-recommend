@@ -56,7 +56,7 @@
                     if (response['result'] == 'success') {
                         $.cookie('mytoken', response['token']);
                         alert('로그인 완료!')
-                        location.href = '/'
+                        location.href = '/main-in'
                     } else {
                         alert(response['msg'])
                     }
