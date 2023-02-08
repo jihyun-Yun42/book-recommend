@@ -1,4 +1,10 @@
-import urllib.request
+
+import datetime
+import jwt
+
+import hashlib
+SECRET_KEY = 'book'
+
 import certifi
 from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
@@ -212,6 +218,16 @@ def book_card_get():
 def mainpage_detail():
     user = db.users.find_one({'name': 'bobby'})
     return jsonify({'msg': 'POST(기록) 연결 완료!'})
+#메인버튼
+
+@app.route('/signup')
+def signin():
+    return render_template('sign-in.html')
+
+
+@app.route('/login')
+def login():
+    return render_template('login-.html')
 
 
 # 회원가입페이지
