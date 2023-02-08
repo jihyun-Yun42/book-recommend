@@ -1,0 +1,862 @@
+Index: templates/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"ko\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"stylesheet\" href=\"/static/style.css\" />\n    <link\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\"\n      rel=\"stylesheet\"\n      integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\"\n      crossorigin=\"anonymous\"\n    />\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n    <script\n      src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js\"\n      integrity=\"sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM\"\n      crossorigin=\"anonymous\"\n    ></script>\n    <script\n      src=\"https://kit.fontawesome.com/771f34c71f.js\"\n      crossorigin=\"anonymous\"\n    ></script>\n    <title>내책소</title>\n  </head>\n  <body>\n    \n    <header class=\"header\"><h1>내 책 소</h1></header>\n    <div class=\"wrap\">\n      <aside class=\"aside\">베스트셀러 TOP 20</aside>\n      <main class=\"main\">\n       <button tton onclick=\"show_popup_write()\" type=\"button\" class=\"btn btn-outline-dark button\">\n          책 추천하기\n        </button>\n        \n        <div id=\"card-box\" class=\"row row-cols-1 row-cols-md-4 g-4\">\n          <div class=\"col\">\n            <div class=\"card\">\n              <img\n                src=\"https://shopping-phinf.pstatic.net/main_3731353/37313533623.20230203071039.jpg?type=w300\"\n                class=\"card-img-top\"\n                alt=\"\"\n              />\n              <div class=\"card-body\">\n                <h5 class=\"card-title\">세이노의 가르침</h5>\n                <div id=\"write-like\">\n                  <span class=\"card-text\">세이노 데이원</span>\n                  <button type=\"button\" class=\"btn btn-outline-primary\">\n                    <i id=\"like\" class=\"fa-regular fa-thumbs-up\"></i>\n                  </button>\n                  <span id=\"count\">1</span>\n                </div>\n              </div>\n            </div>\n          </div>\n          <div class=\"col\">\n            <div class=\"card\">\n              <img\n                src=\"https://shopping-phinf.pstatic.net/main_3757966/37579667622.20230201201341.jpg?type=w300\"\n                class=\"card-img-top\"\n                alt=\"...\"\n              />\n              <div class=\"card-body\">\n                <h5 class=\"card-title\">책제목</h5>\n                <span class=\"card-text\">김미경 </span>\n                <button type=\"button\" class=\"btn btn-outline-primary\">\n                  <i class=\"fa-regular fa-thumbs-up\"></i>\n                </button>\n              </div>\n            </div>\n          </div>\n          <div class=\"col\">\n            <div class=\"card\">\n              <div id=\"test\"></div>\n              <div class=\"card-body\">\n                <h5 class=\"card-title\">책제목</h5>\n                <p class=\"card-text\">\n                  This is a longer card with supporting text below as a natural\n                  lead-in to additional content.\n                </p>\n              </div>\n            </div>\n          </div>\n          <div class=\"col\">\n            <div class=\"card\">\n              <img src=\"...\" class=\"card-img-top\" alt=\"...\" />\n              <div class=\"card-body\">\n                <h5 class=\"card-title\">Card title</h5>\n                <p class=\"card-text\">\n                  This is a longer card with supporting text below as a natural\n                  lead-in to additional content. This content is a little bit\n                  longer.\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </main>\n    </div>\n    <script>\n        $(\"#like\").click(function () {\n        let count = 0;\n\n        console.log(count);\n        });\n\n        function show_popup_write() {\n          window.open(\"/writepage\", \"a\", \"width=1000, height=800, left=100, top=50\");\n        }\n        \n</script>\n  </body>\n</html>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/templates/index.html b/templates/index.html
+--- a/templates/index.html	(revision d2e8abe91674ef81097d3ee41988d256f6ffcd30)
++++ b/templates/index.html	(date 1675828327048)
+@@ -1,113 +1,159 @@
+ <!DOCTYPE html>
+ <html lang="ko">
+-  <head>
+-    <meta charset="UTF-8" />
+-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+-    <link rel="stylesheet" href="/static/style.css" />
++<head>
++    <meta charset="UTF-8"/>
++    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
++    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
++    <link rel="stylesheet" href="/static/style.css"/>
+     <link
+-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+-      rel="stylesheet"
+-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+-      crossorigin="anonymous"
++            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
++            rel="stylesheet"
++            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
++            crossorigin="anonymous"
+     />
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script
+-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+-      crossorigin="anonymous"
++            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
++            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
++            crossorigin="anonymous"
+     ></script>
+     <script
+-      src="https://kit.fontawesome.com/771f34c71f.js"
+-      crossorigin="anonymous"
++            src="https://kit.fontawesome.com/771f34c71f.js"
++            crossorigin="anonymous"
+     ></script>
+     <title>내책소</title>
+-  </head>
+-  <body>
+-    
+-    <header class="header"><h1>내 책 소</h1></header>
+-    <div class="wrap">
+-      <aside class="aside">베스트셀러 TOP 20</aside>
+-      <main class="main">
+-       <button tton onclick="show_popup_write()" type="button" class="btn btn-outline-dark button">
+-          책 추천하기
++</head>
++<body>
++<nav class="navbar">
++    <div class="navbar_logo">
++        <button onclick="window.location.href='/'" type="button" class="btn btn-success"><i class="fas fa-book"></i> 내책소
++        </button>
++
++    </div>
++    <div>
++        <button id="login" type="button" class="btn btn-outline-primary" onclick="window.location.href='/login'">
++            로그인
++        </button>
++        <button id="sign-up" type="button" class="btn btn-outline-primary" onclick="window.location.href='/signin'">
++            회원가입
++        </button>
++    </div>
++</nav>
++<header class="header">
++    <h1>내 책 소</h1>
++</header>
++<div class="wrap">
++    <aside class="aside">
++        <h4>베스트셀러 TOP 20</h4>
++        <ul id="list">
++
++        </ul>
++    </aside>
++    <main class="main">
++        <button type="button" class="btn btn-outline-dark button" onclick="show_popup_write()">
++            책 추천하기
+         </button>
+-        
+         <div id="card-box" class="row row-cols-1 row-cols-md-4 g-4">
+-          <div class="col">
+-            <div class="card">
+-              <img
+-                src="https://shopping-phinf.pstatic.net/main_3731353/37313533623.20230203071039.jpg?type=w300"
+-                class="card-img-top"
+-                alt=""
+-              />
+-              <div class="card-body">
+-                <h5 class="card-title">세이노의 가르침</h5>
+-                <div id="write-like">
+-                  <span class="card-text">세이노 데이원</span>
+-                  <button type="button" class="btn btn-outline-primary">
+-                    <i id="like" class="fa-regular fa-thumbs-up"></i>
+-                  </button>
+-                  <span id="count">1</span>
+-                </div>
+-              </div>
+-            </div>
+-          </div>
+-          <div class="col">
+-            <div class="card">
+-              <img
+-                src="https://shopping-phinf.pstatic.net/main_3757966/37579667622.20230201201341.jpg?type=w300"
+-                class="card-img-top"
+-                alt="..."
+-              />
+-              <div class="card-body">
+-                <h5 class="card-title">책제목</h5>
+-                <span class="card-text">김미경 </span>
+-                <button type="button" class="btn btn-outline-primary">
+-                  <i class="fa-regular fa-thumbs-up"></i>
+-                </button>
+-              </div>
++            <div class="col" onclick="detailpage()">
++                <div class="card">
++                    <img src="https://shopping-phinf.pstatic.net/main_3731353/37313533623.20230203071039.jpg?type=w300"
++                         class="card-img-top"
++                         alt=""/>
++                    <div class="card-body">
++                        <h5 class="card-title">세이노의 가르침</h5>
++                        <div id="write-like">
++                            <span class="card-text">세이노 데이원</span>
++                            <p>
++                                <button id="like-box" type="button" class="btn btn-outline-primary">
++                                    <i id="like" class="fa-regular fa-thumbs-up"><span id="count">1</span></i>
++                                </button>
++                            </p>
++                        </div>
++                    </div>
++                </div>
+             </div>
+-          </div>
+-          <div class="col">
+-            <div class="card">
+-              <div id="test"></div>
+-              <div class="card-body">
+-                <h5 class="card-title">책제목</h5>
+-                <p class="card-text">
+-                  This is a longer card with supporting text below as a natural
+-                  lead-in to additional content.
+-                </p>
+-              </div>
+-            </div>
+-          </div>
+-          <div class="col">
+-            <div class="card">
+-              <img src="..." class="card-img-top" alt="..." />
+-              <div class="card-body">
+-                <h5 class="card-title">Card title</h5>
+-                <p class="card-text">
+-                  This is a longer card with supporting text below as a natural
+-                  lead-in to additional content. This content is a little bit
+-                  longer.
+-                </p>
+-              </div>
+-            </div>
+-          </div>
+-        </div>
+-      </main>
+-    </div>
+-    <script>
+-        $("#like").click(function () {
+-        let count = 0;
++
++        </div>
++    </main>
++</div>
++<script>
++    function show_popup_write() {
++        window.open("/writepage", "a", "width=1000, height=800, left=100, top=50");
++    }
++
++    $(document).ready(function () {
++        listing();
++    });
++
++    function listing() {
++        $.ajax({
++            type: "GET",
++            url: "/bestseller",
++            data: {},
++            success: function (response) {
++                let rows = response['bestseller']
++                for (let i = 0; i < rows.length; i++) {
++                    let rank = rows[i]['rank']
++                    let author = rows[i]['author']
++                    let title = rows[i]['title']
++                    let temp_html = ` <li>${rank}, ${title}, ${author}</li>`
++                    $('#list').append(temp_html)
++                }
++
++            }
++        })
++
++    }
++    $(document).ready(function () {
++        testing();
++    });
++    function testing() {
++        $.ajax({
++        type: "GET",
++        url: "/showbook",
++        data: {},
++        success: function(response){
++        let rows = response['book']
++            for(let i=0; i<rows.length; i++){
++                let title = rows[i].title
++                let author = rows[i].author
++                let image = rows[i].image
++                let num = rows[i].num
++                let temp_html = `
++                <div class="col" onclick="detailpage(${num})">
++                    <div class="card">
++                        <img src= ${image}
++                            class="card-img-top"
++                            alt=""/>
++                        <div class="card-body">
++                            <h5 class="card-title">${title}</h5>
++                            <div id="write-like">
++                                <span class="card-text">${author}</span>
++                                <p>
++                                    <button id="like-box" type="button" class="btn btn-outline-primary">
++                                        <i id="like" class="fa-regular fa-thumbs-up"><span id="count">1</span></i>
++                                    </button>
++                                </p>
++                            </div>
++                        </div>
++                    </div>
++                </div>`
++                $('#card-box').append(temp_html);
++            }
+ 
+-        console.log(count);
+-        });
+ 
+-        function show_popup_write() {
+-          window.open("/writepage", "a", "width=1000, height=800, left=100, top=50");
+         }
+-        
++        })
++    }
++    function detailpage(num) {
++      location.href="/detail/"+num
++    }
+ </script>
+-  </body>
++</body>
++</html>
++
++
++</body>
+ </html>
++
++
+Index: app.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from flask import Flask, render_template, request, jsonify\napp = Flask(__name__)\n\n# mongoDB연결코드\nfrom pymongo import MongoClient\nimport certifi\nca = certifi.where()\n\nclient = MongoClient('mongodb+srv://test:sparta@cluster0.ynnqkbk.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile = ca)\ndb = client.book_recommend\n\n# 크롤링을 위한 코드\nimport urllib.request\n\n\n# import requests\n# from bs4 import BeautifulSoup\n\n# headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}\n# data = requests.get('http://www.yes24.com/Product/Goods/117181537',headers=headers)\n\n# soup = BeautifulSoup(data.text, 'html.parser')\n\n\n@app.route('/')\ndef home():\n   return render_template('index.html')\n\n@app.route('/signin')\ndef signin():\n    return render_template('re.html')\n\n@app.route('/login')\ndef login():\n    return render_template('rogin.html')\n\n@app.route('/writepage')\ndef writepage():\n    return render_template('write.html')\n\n\n# 글작성 페이지\n@app.route(\"/write\", methods=[\"POST\"])\ndef write():\n    nicname = request.form['nicname']\n    comment = request.form['comment']\n    image = request.form['image']\n    title = request.form['title']\n    author = request.form['author']\n\n    if nicname == '' or comment == '':\n        return jsonify({'msgnot': '내용을 입력해주세요'})\n    else:\n        doc = {\n        'image':image,\n        'comment':comment,\n        'nicname':nicname,\n        'title':title,\n        'author':author\n        }\n        db.write.insert_one(doc)\n    return jsonify({'msg': '작성완료'})\n\n\n# 상세페이지\n@app.route(\"/detailpage/like\", methods=[\"POST\"])\ndef detailpage_like():\n    sample_receive = request.form['sample_give']\n    return jsonify({'msg': 'POST(기록) 연결 완료!'})\n\n\n@app.route(\"/detailpage\", methods=[\"GET\"])\ndef detailpage_get():\n    return jsonify({'msg': 'POST(기록) 연결 완료!'})\n\n\n@app.route(\"/detailpage/delete\", methods=[\"POST\"])\ndef detailpage_delete():\n    sample_receive = request.form['sample_give']\n    return jsonify({'msg': 'POST(기록) 연결 완료!'})\n\n\n\n# 메인페이지\n@app.route(\"/mainpage/login\", methods=[\"POST\"])\ndef mainpage_login():\n    sample_receive = request.form['sample_give']\n    return jsonify({'msg': 'POST(기록) 연결 완료!'})\n\n\n@app.route(\"/mainpage\", methods=[\"GET\"])\ndef mainpage_get():\n    \n    return jsonify({'msg': 'POST(기록) 연결 완료!'})\n\n\n# 회원가입페이지\n@app.route(\"/join\", methods=[\"POST\"])\ndef join():\n    sample_receive = request.form['sample_give']\n    return jsonify({'msg': 'POST(기록) 연결 완료!'})\n\nif __name__ == '__main__':\n   app.run('0.0.0.0', port=5002, debug=True)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app.py b/app.py
+--- a/app.py	(revision d2e8abe91674ef81097d3ee41988d256f6ffcd30)
++++ b/app.py	(date 1675829651408)
+@@ -1,38 +1,41 @@
++import urllib.request
++import certifi
++from pymongo import MongoClient
+ from flask import Flask, render_template, request, jsonify
+ app = Flask(__name__)
+ 
+ # mongoDB연결코드
+-from pymongo import MongoClient
+-import certifi
+ ca = certifi.where()
+ 
+-client = MongoClient('mongodb+srv://test:sparta@cluster0.ynnqkbk.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile = ca)
++client = MongoClient('mongodb+srv://test:sparta@cluster0.ynnqkbk.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
+ db = client.book_recommend
+ 
+-# 크롤링을 위한 코드
+-import urllib.request
+-
+-
+-# import requests
+-# from bs4 import BeautifulSoup
+-
+-# headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+-# data = requests.get('http://www.yes24.com/Product/Goods/117181537',headers=headers)
+-
+-# soup = BeautifulSoup(data.text, 'html.parser')
+-
+ 
+ @app.route('/')
+ def home():
+-   return render_template('index.html')
++    return render_template('index.html')
+ 
++
+ @app.route('/signin')
+ def signin():
+-    return render_template('re.html')
++    return render_template('sign-in.html')
++
++
++@app.route('/detail/<int:num>')
++def detail(num):
++    title = db.write.find_one({'num':num})['title']
++    image = db.write.find_one({'num':num})['image']
++    comment = db.write.find_one({'num':num})['comment']
++    author = db.write.find_one({'num':num})['author']
++    nicname = db.write.find_one({'num':num})['nicname']
++
++    return render_template('detailpage.html', title=title, image=image, comment=comment, author=author, nicname=nicname)
++
+ 
+ @app.route('/login')
+ def login():
+-    return render_template('rogin.html')
++    return render_template('login.html')
++
+ 
+ @app.route('/writepage')
+ def writepage():
+@@ -47,40 +50,57 @@
+     image = request.form['image']
+     title = request.form['title']
+     author = request.form['author']
+-
++    book_list = list(db.write.find({},{'_id':False}))
++    num = len(book_list) + 1
+     if nicname == '' or comment == '':
+         return jsonify({'msgnot': '내용을 입력해주세요'})
+     else:
+         doc = {
+-        'image':image,
+-        'comment':comment,
+-        'nicname':nicname,
+-        'title':title,
+-        'author':author
++            'num':num,
++            'image': image,
++            'comment': comment,
++            'nicname': nicname,
++            'title': title,
++            'author': author
+         }
+         db.write.insert_one(doc)
+     return jsonify({'msg': '작성완료'})
+ 
+ 
+ # 상세페이지
+-@app.route("/detailpage/like", methods=["POST"])
+-def detailpage_like():
+-    sample_receive = request.form['sample_give']
+-    return jsonify({'msg': 'POST(기록) 연결 완료!'})
+ 
+ 
+ @app.route("/detailpage", methods=["GET"])
+-def detailpage_get():
+-    return jsonify({'msg': 'POST(기록) 연결 완료!'})
++def detail_comments():
++    comment_list = list(db.bookrec.find({}, {'_id': False}))
++    return jsonify({'comments': comment_list})
++
++
++@app.route("/detailpage", methods=["POST"])
++def detail_post():
++    nickname_receive = request.form['nickname_give']
++    comment_receive = request.form['comment_give']
++
++    doc = {
++        'nickname': nickname_receive,
++        'comment': comment_receive
++    }
++
++    db.bookrec.insert_one(doc)
++    return jsonify({'msg': '댓글작성 완료!'})
+ 
+ 
+-@app.route("/detailpage/delete", methods=["POST"])
+-def detailpage_delete():
++@app.route("/detailpage", methods=["DELETE"])
++def detail_delete():
++    return jsonify({'msg': '삭제 완료!'})
++
++
++@app.route("/detailpage/edit", methods=["PUT"])
++def detailpage_edit():
+     sample_receive = request.form['sample_give']
+     return jsonify({'msg': 'POST(기록) 연결 완료!'})
+ 
+ 
+-
+ # 메인페이지
+ @app.route("/mainpage/login", methods=["POST"])
+ def mainpage_login():
+@@ -88,17 +108,43 @@
+     return jsonify({'msg': 'POST(기록) 연결 완료!'})
+ 
+ 
+-@app.route("/mainpage", methods=["GET"])
+-def mainpage_get():
+-    
++@app.route("/showbook", methods=["GET"])
++def book_card_get():
++    book_card = list(db.write.find({}, {'_id': False}))
++    return jsonify({'book': book_card})
++
++
++@app.route("/mainpage/detail", methods=["POST"])
++def mainpage_detail():
++    user = db.users.find_one({'name': 'bobby'})
+     return jsonify({'msg': 'POST(기록) 연결 완료!'})
+ 
+ 
+ # 회원가입페이지
+ @app.route("/join", methods=["POST"])
+ def join():
+-    sample_receive = request.form['sample_give']
++    id_receive = request.form['id_give']
++    pw_receive = request.form['pw_give']
++    pw_pw_receive = request.form['pw_pw_give']
++    nick_receive = request.form['nick_give']
++    mail_receive = request.form['mail_give']
++    address_receive = request.form['address_give']
++    juso_receive = request.form['juso_give']
++
++    doc = {
++        'id': id_receive,
++        'pw': pw_receive,
++        'pw_pw': pw_pw_receive,
++        'nick': nick_receive,
++        'mail': mail_receive,
++        'address': address_receive,
++        'juso': juso_receive
++    }
++
++    db.join.insert_one(doc)
++
+     return jsonify({'msg': 'POST(기록) 연결 완료!'})
+ 
++
+ if __name__ == '__main__':
+-   app.run('0.0.0.0', port=5002, debug=True)
+\ No newline at end of file
++    app.run('0.0.0.0', port=5002, debug=True)
+Index: templates/re.html
+===================================================================
+diff --git a/templates/re.html b/templates/re.html
+deleted file mode 100644
+--- a/templates/re.html	(revision d2e8abe91674ef81097d3ee41988d256f6ffcd30)
++++ /dev/null	(revision d2e8abe91674ef81097d3ee41988d256f6ffcd30)
+@@ -1,124 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="en">
+-
+-<head>
+-
+-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+-  <meta charset="UTF-8">
+-  <title>상세페이지</title>
+-
+-  <style>
+-    body {
+-      min-height: 100vh;
+-
+-      background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
+-      background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+-      background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+-      background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+-      background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+-    }
+-
+-    .input-form {
+-      max-width: 680px;
+-
+-      margin-top: 80px;
+-      padding: 32px;
+-
+-      background: #fff;
+-      -webkit-border-radius: 10px;
+-      -moz-border-radius: 10px;
+-      border-radius: 10px;
+-      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+-      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+-      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+-    }
+-  </style>
+-  <script>
+-    window.addEventListener('load', () => {
+-      const forms = document.getElementsByClassName('validation-form');
+-
+-      Array.prototype.filter.call(forms, (form) => {
+-        form.addEventListener('submit', function (event) {
+-          if (form.checkValidity() === false) {
+-            event.preventDefault();
+-            event.stopPropagation();
+-          }
+-
+-          form.classList.add('was-validated');
+-        }, false);
+-      });
+-    }, false);
+-  </script>
+-</head>
+-
+-<body>
+-  <div class="wrapper">
+-    <div class="container">
+-      <div class="input-form-backgroud row">
+-        <div class="input-form col-md-12 mx-auto">
+-          <h4 class="mb-3">회원가입</h4>
+-          <form class="validation-form" novalidate>
+-            <div class="row">
+-              <div class="col-md-5 mb-3">
+-                <label for="name">아이디</label>
+-                <input type="text" class="form-control" id="name" placeholder="아이디를 입력해주세요" value="" required>
+-                <div class="invalid-feedback">
+-                  아이디를 입력해주세요.
+-                </div>
+-              </div>
+-              <div class="col-md-6 mb-3">
+-                <label for="nickname">닉네임</label>
+-                <input type="text" class="form-control" id="nickname" placeholder="사용하실 닉네임을 입력해주세요." value="" required>
+-                <div class="invalid-feedback">
+-                  사용하실 닉네임을 입력해주세요.
+-                </div>
+-              </div>
+-              <div class="col-md-5 mb-3">
+-                <label for="name">비밀번호</label>
+-                <input type="text" class="form-control" id="name" placeholder="비밀번호를 입력해주세요" value="" required>
+-
+-              </div>
+-              <div class="col-md-6 mb-3">
+-                <label for="nickname">비밀번호 확인</label>
+-                <input type="text" class="form-control" id="nickname" placeholder="비밀번호 재입력" value="" required>
+-                <div class="invalid-feedback">
+-                  비밀번호가 맞지 않습니다.
+-                </div>
+-              </div>
+-            </div>
+-
+-            <div class="mb-3">
+-              <label for="email">이메일</label>
+-              <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+-              <div class="invalid-feedback">
+-                이메일을 입력해주세요.
+-              </div>
+-            </div>
+-
+-            <div class="mb-3">
+-              <label for="address">주소</label>
+-              <input type="text" class="form-control" id="address" placeholder="서울특별시 강남구" required>
+-              <div class="invalid-feedback">
+-                주소를 입력해주세요.
+-              </div>
+-            </div>
+-
+-            <div class="mb-3">
+-              <label for="address2">상세주소<span class="text-muted">&nbsp;(필수 아님)</span></label>
+-              <input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요.">
+-            </div>
+-
+-            <div class="row">
+-            </div>
+-            <hr class="mb-4">
+-            <div class="mb-4"></div>
+-            <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
+-          </form>
+-        </div>
+-      </div>
+-    </div>
+-
+-</body>
+-
+-</html>
+\ No newline at end of file
+Index: templates/rogin.html
+===================================================================
+diff --git a/templates/rogin.html b/templates/rogin.html
+deleted file mode 100644
+--- a/templates/rogin.html	(revision d2e8abe91674ef81097d3ee41988d256f6ffcd30)
++++ /dev/null	(revision d2e8abe91674ef81097d3ee41988d256f6ffcd30)
+@@ -1,59 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="en">
+-<head>
+-
+-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+-    <meta charset="UTF-8">
+-    <title>Title</title>
+-
+-
+-    <style>
+-        body {
+-      min-height: 100vh;
+-
+-      background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
+-      background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+-      background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+-      background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+-      background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+-    }
+-        .input-form {
+-      max-width: 500px;
+-
+-      margin-top: 80px;
+-      padding: 32px;
+-
+-      background: #fff;
+-      -webkit-border-radius: 10px;
+-      -moz-border-radius: 10px;
+-      border-radius: 10px;
+-      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+-      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+-      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+-    }
+-    </style>
+-</head>
+-<body>
+-<div>
+-    <div class="input-form-backgroud row">
+-        <div class="input-form col-md-13 mx-auto">
+-            <h4 class="mb-3">로그인 페이지</h4>
+-            <form class="validation-form" novalidate>
+-                <div class="row">
+-                    <div class="col-md-6 mb-3">
+-                        <label for="name">아이디</label>
+-                        <input type="text" class="form-control" id="name" placeholder="아이디를 입력해주세요" value="" required>
+-                    </div>
+-                </div>
+-                <div class="col-md-6 mb-3">
+-                        <label for="name">비밀번호</label>
+-                        <input type="text" class="form-control" id="name" placeholder="비밀번호를 입력해주세요" value="" required>
+-                </div>
+-                <div>
+-                </div>
+-                <hr class="mb-4">
+-                <button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
+-        </div>
+-</body>
+-</html>
+\ No newline at end of file
+Index: templates/write.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"ko\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>나의 책을 소개해줄게</title>\n  <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\n    integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n  <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js\"\n    integrity=\"sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM\"\n    crossorigin=\"anonymous\"></script>\n  <link rel=\"stylesheet\" href=\"../static/write.css\">\n  <script>\n    function post() {\n      let image = $('#urlBox').val()\n      let nicName = $('#nicName').val()\n      let comment = $('#comment').val()\n      let title = $('#title').val()\n      let author = $('#author').val()\n\n      $.ajax({\n          type: \"POST\",\n          url: \"/write\",\n          data: {'url':url, 'nicname':nicName, 'comment':comment},\n          success: function (response) {\n            if(response['msgnot']){\n              alert(response['msgnot'])\n            } else {\n              alert(response[\"msg\"])\n              window.open('','_self').close();\n            }\n          }\n      });\n    }\n\n  </script>\n</head>\n  \n<body>\n  <div class=\"box1\">\n    <div>\n      <input type=\"text\" placeholder=\"닉네임\" class=\"nicname form-control\" id=\"nicName\">\n    </div>\n\n    <a onclick=\"post()\"  href=\"javascript:post();\">작성하기</a>\n\n  </div>\n\n  <div class=\"box2\">\n    <div class=\"urlBox\">\n      <input type=\"url\" class=\"urlBoxIn form-control\" id=\"urlBox\" placeholder=\"이미지 url\">\n    </div>\n    <input type=\"url\" class=\"urlBoxIn form-control\" id=\"title\" placeholder=\"책 이름\">\n    <input type=\"url\" class=\"urlBoxIn form-control\" id=\"author\" placeholder=\"저자\">\n    <textarea class=\"writeBox form-control\" placeholder=\"추천이유를 적어주세요\" id=\"comment\"></textarea>\n\n  </div>\n\n</body>\n\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/templates/write.html b/templates/write.html
+--- a/templates/write.html	(revision d2e8abe91674ef81097d3ee41988d256f6ffcd30)
++++ b/templates/write.html	(date 1675783583773)
+@@ -15,7 +15,7 @@
+   <link rel="stylesheet" href="../static/write.css">
+   <script>
+     function post() {
+-      let image = $('#urlBox').val()
++      let image = $('#image').val()
+       let nicName = $('#nicName').val()
+       let comment = $('#comment').val()
+       let title = $('#title').val()
+@@ -24,13 +24,15 @@
+       $.ajax({
+           type: "POST",
+           url: "/write",
+-          data: {'url':url, 'nicname':nicName, 'comment':comment},
++          data: {'image':image, 'nicname':nicName, 'comment':comment, 'title':title, 'author':author},
+           success: function (response) {
+             if(response['msgnot']){
+               alert(response['msgnot'])
+             } else {
+               alert(response["msg"])
++              
+               window.open('','_self').close();
++              opener.parent.location.reload();
+             }
+           }
+       });
+@@ -45,13 +47,13 @@
+       <input type="text" placeholder="닉네임" class="nicname form-control" id="nicName">
+     </div>
+ 
+-    <a onclick="post()"  href="javascript:post();">작성하기</a>
++    <a onclick="post()">작성하기</a>
+ 
+   </div>
+ 
+   <div class="box2">
+     <div class="urlBox">
+-      <input type="url" class="urlBoxIn form-control" id="urlBox" placeholder="이미지 url">
++      <input type="url" class="urlBoxIn form-control" id="image" placeholder="이미지 url">
+     </div>
+     <input type="url" class="urlBoxIn form-control" id="title" placeholder="책 이름">
+     <input type="url" class="urlBoxIn form-control" id="author" placeholder="저자">
+Index: templates/detailpage.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"ko\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\n    integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js\"\n    integrity=\"sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM\"\n    crossorigin=\"anonymous\"></script>\n    <link rel=\"stylesheet\" href=\"/static/detailpage.css\" />\n    <link rel=\"stylesheet\" href=\"//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css\">\n\n    <script>\n        let count=0;\n        function Like(){\n            if (count%2===0){\n                const pushLikeBtn = document.querySelector(\".LikeBtn\");\n                    pushLikeBtn.innerHTML ='<i class=\"xi-thumbs-up xi-2x\"></i>';\n                    pushLikeBtn.style.color ='black'; \n                count=0\n            } else {\n                const pushLikeBtn = document.querySelector(\".LikeBtn\");\n                    pushLikeBtn.innerHTML ='<i class=\"xi-thumbs-up xi-2x\"></i>';\n                    pushLikeBtn.style.color ='blue';\n                count=1\n            }\n        }\n        // function Like(){\n        //     const pushLikeBtn = document.querySelector(\".LikeBtn\");\n        //             pushLikeBtn.innerHTML ='<i class=\"xi-thumbs-up xi-2x\"></i>';\n\n        //                 pushLikeBtn.innerHTML ='<i class=\"xi-thumbs-up xi-2x\"></i>';\n        //                 pushLikeBtn.style.color ='blue'; \n        //                 pushLikeBtn.addEventListener(\"click\",countPlus);\n        // }\n\n        // function UnLike{\n        //     const pushLikeBtn = document.querySelector(\".LikeBtn\");\n        //         pushLikeBtn.innerHTML ='<i class=\"xi-thumbs-up xi-2x\"></i>';\n        //                 pushLikeBtn.style.color ='black'; \n        //                 pushLikeBtn.addEventListener(\"click\",countMinus);\n\n        // }\n\n        // function countPlus(){\n        //         count=count+1;\n        //         document.querySelector(\".like_count\").innerHTML=count+1 +\"개\";\n        //     }\n            \n        // function countMinus(){\n        //     count=count-1;\n        //     document.querySelector(\".like_count\").innerHTML=count-1 +\"개\";\n        //     }\n    </script>\n\n    <title>(가제)나의 책을 소개해줄게</title>\n    <style>\n        /* * {\n            background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://images.freeimages.com/images/large-previews/bf7/old-paper-texture-1168792.jpg');\n            background-repeat: no-repeat;\n            background-position: center;\n            background-attachment: fixed;\n            background-size: cover;\n            color: white;\n\n        } */\n        .wrap {\n            display: flex;\n        }\n        .bookinfo {\n            width: 50%;\n            margin-left: 20px;\n            /* border: 1px solid black; */\n        }\n        .imgbox {\n            text-align: center;\n            margin-top: 30px;\n            border: 1px solid black;\n        }\n        .bookimg {\n            width: 152px;\n            height: 225px;\n            margin-top: 30px;\n            margin-bottom: 30px;\n        }\n        .bookdesc {\n            border: 1px solid black;\n            margin-top: 20px;\n            padding: 5px 5px 5px 5px;\n        }\n        .desc {\n            width: 50%;\n            /* border: 1px solid black; */\n            padding-left: 20px;\n            margin-right: 20px;\n        }\n        .userinfo {\n            display: flex;\n            margin-right: 20px;\n            margin-top: 30px;\n            border: 1px solid black;\n            padding: 5px 5px 5px 5px;\n        }\n        .nickname {\n            float: left;\n            margin-right: 40px;\n        }\n        .like {\n            display: flex;\n            float: left;\n            margin-right: 40px;\n        }\n        .likeimg {\n            width: 20px;\n            height: 20px;\n        }\n        .delete {\n            float: right;\n        }\n        .recommend {\n            height: 200px;\n            margin-top: 20px;\n            margin-bottom: 20px;\n            border: 1px solid black;\n            padding: 5px 5px 5px 5px;\n        }\n        .comment { \n            display: flex;\n            padding: 5px 5px 5px 5px;\n        }\n        .LikeBtn{\n            width: 45px;\n            height: 45px;\n            background-color: transparent;\n            border-color: transparent;\n        }\n        .thumb {\n            width: 40px;\n            height: 40px;\n        }\n        .commentbox {\n            border: 1px solid black;\n            margin-top: 20px;\n            padding: 5px 5px 5px 5px;\n            \n        }\n\n    </style>\n</head>\n\n<body>\n    <div class=\"wrap\">\n        <div class=\"bookinfo\">\n            <div class=\"imgbox\">\n                <img id=\"bookimg\" class=\"bookimg\" src=\"https://cdn.crowdpic.net/detail-thumb/thumb_d_9F6EFDE62FBB6C2ED90247B855AFCA05.jpg\" alt=\"book cover image\">\n            </div>\n            <div class=\"bookdesc\">\n                <div>\n                    <h3 id=\"booktitle\">책제목</h3>\n                </div>\n                <div>\n                    <h4 id=\"bookauthor\">저자</h4>\n                </div>\n                <div>\n                    <p id=\"bookdesc\">줄거리</p>\n                </div>\n            </div>\n        </div>\n        <div class=\"desc\">\n            <div class=\"userinfo\">\n                <div class=\"nickname\">\n                    <p id=\"nickname\">nickname</p>\n                </div>\n                <div class=\"like\">\n                    <img class=\"likeimg\" src=\"../static/thumbup.png\">\n                    <p class=\"like_count\" onchange=\"countPlus\">0 개</p>\n                </div>\n                <div class=\"delete\">\n                    <button id=\"dbutton\" type=\"button\" class=\"btn btn-outline-dark\">삭제</button>\n                </div>\n            </div>\n            <div class=\"recommend\" id=\"recommend\">\n                추천이유 \n            </div>\n            <div class=\"comment\">\n                <button id=\"commentlike\" class=\"LikeBtn\" onclick=\"Like()\"><i class=\"xi-thumbs-up xi-2x\"></i></button>\n                <input id=\"comment\" type=\"text\" class=\"form-control\" placeholder=\"댓글달기\" aria-label=\"댓글달기\" aria-describedby=\"button-addon2\">\n                <button class=\"btn btn-outline-secondary\" type=\"button\" id=\"button-addon2\">작성</button>\n            </div>\n            <div class=\"commentbox\" id=\"commentbox\">\n                <div class=\"card-body\">\n                    <blockquote class=\"blockquote mb-0\">\n                        <p>저도 이 책 정말 재밌게 읽었어요!</p>\n                        <footer class=\"blockquote-footer\">양인서 <cite title=\"Source Title\"></cite></footer>\n                    </blockquote>\n                </div>\n            </div>\n        </div>\n    </div>\n\n</body>\n\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/templates/detailpage.html b/templates/detailpage.html
+--- a/templates/detailpage.html	(revision d2e8abe91674ef81097d3ee41988d256f6ffcd30)
++++ b/templates/detailpage.html	(date 1675829909579)
+@@ -14,14 +14,17 @@
+     crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="/static/detailpage.css" />
+     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+-
++    <script
++            src="https://kit.fontawesome.com/771f34c71f.js"
++            crossorigin="anonymous"
++    ></script>
+     <script>
+         let count=0;
+         function Like(){
+             if (count%2===0){
+                 const pushLikeBtn = document.querySelector(".LikeBtn");
+                     pushLikeBtn.innerHTML ='<i class="xi-thumbs-up xi-2x"></i>';
+-                    pushLikeBtn.style.color ='black'; 
++                    pushLikeBtn.style.color ='black';
+                 count=0
+             } else {
+                 const pushLikeBtn = document.querySelector(".LikeBtn");
+@@ -35,14 +38,14 @@
+         //             pushLikeBtn.innerHTML ='<i class="xi-thumbs-up xi-2x"></i>';
+ 
+         //                 pushLikeBtn.innerHTML ='<i class="xi-thumbs-up xi-2x"></i>';
+-        //                 pushLikeBtn.style.color ='blue'; 
++        //                 pushLikeBtn.style.color ='blue';
+         //                 pushLikeBtn.addEventListener("click",countPlus);
+-        // }
++        
+ 
+         // function UnLike{
+         //     const pushLikeBtn = document.querySelector(".LikeBtn");
+         //         pushLikeBtn.innerHTML ='<i class="xi-thumbs-up xi-2x"></i>';
+-        //                 pushLikeBtn.style.color ='black'; 
++        //                 pushLikeBtn.style.color ='black';
+         //                 pushLikeBtn.addEventListener("click",countMinus);
+ 
+         // }
+@@ -51,14 +54,14 @@
+         //         count=count+1;
+         //         document.querySelector(".like_count").innerHTML=count+1 +"개";
+         //     }
+-            
++
+         // function countMinus(){
+         //     count=count-1;
+         //     document.querySelector(".like_count").innerHTML=count-1 +"개";
+         //     }
+     </script>
+ 
+-    <title>(가제)나의 책을 소개해줄게</title>
++    <title>상세페이지</title>
+     <style>
+         /* * {
+             background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://images.freeimages.com/images/large-previews/bf7/old-paper-texture-1168792.jpg');
+@@ -129,7 +132,7 @@
+             border: 1px solid black;
+             padding: 5px 5px 5px 5px;
+         }
+-        .comment { 
++        .comment {
+             display: flex;
+             padding: 5px 5px 5px 5px;
+         }
+@@ -147,48 +150,45 @@
+             border: 1px solid black;
+             margin-top: 20px;
+             padding: 5px 5px 5px 5px;
+-            
++
+         }
+ 
+     </style>
+ </head>
+ 
+ <body>
++<nav class="navbar">
++    <div class="navbar_logo">
++<button onclick="window.location.href='/'" type="button" class="btn btn-success"><i class="fas fa-book"></i> 내책소</button>
++    </div></nav>
+     <div class="wrap">
+         <div class="bookinfo">
+             <div class="imgbox">
+-                <img id="bookimg" class="bookimg" src="https://cdn.crowdpic.net/detail-thumb/thumb_d_9F6EFDE62FBB6C2ED90247B855AFCA05.jpg" alt="book cover image">
++                <img id="bookimg" class="bookimg" src="{{image}}" alt="book cover image">
+             </div>
+             <div class="bookdesc">
+                 <div>
+-                    <h3 id="booktitle">책제목</h3>
+-                </div>
+-                <div>
+-                    <h4 id="bookauthor">저자</h4>
++                    <h3 id="booktitle">{{ title }}</h3>
+                 </div>
+                 <div>
+-                    <p id="bookdesc">줄거리</p>
++                    <h4 id="bookauthor">{{author}}</h4>
+                 </div>
+             </div>
+         </div>
+         <div class="desc">
+             <div class="userinfo">
+                 <div class="nickname">
+-                    <p id="nickname">nickname</p>
+-                </div>
+-                <div class="like">
+-                    <img class="likeimg" src="../static/thumbup.png">
+-                    <p class="like_count" onchange="countPlus">0 개</p>
++                    <p id="nickname">{{nicname}}</p>
+                 </div>
+                 <div class="delete">
++                    <button id="ubutton" type="button" class="btn btn-outline-dark">수정</button>
+                     <button id="dbutton" type="button" class="btn btn-outline-dark">삭제</button>
+                 </div>
+             </div>
+             <div class="recommend" id="recommend">
+-                추천이유 
++                {{comment}}
+             </div>
+             <div class="comment">
+-                <button id="commentlike" class="LikeBtn" onclick="Like()"><i class="xi-thumbs-up xi-2x"></i></button>
+                 <input id="comment" type="text" class="form-control" placeholder="댓글달기" aria-label="댓글달기" aria-describedby="button-addon2">
+                 <button class="btn btn-outline-secondary" type="button" id="button-addon2">작성</button>
+             </div>
+@@ -196,13 +196,16 @@
+                 <div class="card-body">
+                     <blockquote class="blockquote mb-0">
+                         <p>저도 이 책 정말 재밌게 읽었어요!</p>
+-                        <footer class="blockquote-footer">양인서 <cite title="Source Title"></cite></footer>
+                     </blockquote>
+                 </div>
+             </div>
+         </div>
+     </div>
+ 
++<script>
++   
++
++</script>
+ </body>
+ 
+ </html>
+\ No newline at end of file

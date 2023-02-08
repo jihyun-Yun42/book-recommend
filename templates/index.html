@@ -119,7 +119,7 @@
                 let title = rows[i].title
                 let author = rows[i].author
                 let image = rows[i].image
-                let _id = rows[i]._id
+                let num = rows[i].num
                 let temp_html = `
                 <div class="col" onclick="detailpage(${num})">
                     <div class="card">
@@ -132,7 +132,7 @@
                                 <span class="card-text">${author}</span>
                                 <p>
                                     <button id="like-box" type="button" class="btn btn-outline-primary">
-                                        <i id="like" class="fa-regular fa-thumbs-up"><span id="count">1${_id}</span></i>
+                                        <i id="like" class="fa-regular fa-thumbs-up"><span id="count">1</span></i>
                                     </button>
                                 </p>
                             </div>
@@ -157,9 +157,6 @@
 
     function go_login() {
         window.location.href = '/login'
-
-
-
     }
 </script>
 </body>

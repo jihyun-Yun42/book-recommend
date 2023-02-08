@@ -1,10 +1,3 @@
-
-import datetime
-import jwt
-
-
-SECRET_KEY = 'book'
-
 import certifi
 from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
@@ -36,13 +29,6 @@ def home():
 @app.route('/signup')
 def signin():
     return render_template('sign-in.html')
-
-
-
-@app.route('/signup')
-def signin():
-    return render_template('sign-in.html')
-
 
 
 @app.route('/login')
@@ -146,19 +132,6 @@ def bestseller_get():
         db.bestseller.insert_one(doc)
     book_list = list(db.bestseller.find({}, {'_id': False}))
     return jsonify({'bestseller': book_list})
-
-
-# 상세페이지 이동
-@app.route('/detail/<num>')
-def detail(num):
-    title = db.write.find_one({'num': num})['title']
-    image = db.write.find_one({'num': num})['image']
-    comment = db.write.find_one({'num': num})['comment']
-    author = db.write.find_one({'num': num})['author']
-    nicname = db.write.find_one({'num': num})['nicname']
-    num = db.write.find_one({'num': num})['num']
-    return render_template('detailpage.html', num=num, title=title, image=image, comment=comment, author=author,
-                           nicname=nicname)
 
 
 
@@ -275,20 +248,7 @@ def book_card_get():
     return jsonify({'book': book_card})
 
 
-@app.route("/mainpage/detail", methods=["POST"])
-def mainpage_detail():
-    user = db.users.find_one({'name': 'bobby'})
-    return jsonify({'msg': 'POST(기록) 연결 완료!'})
-#메인버튼
 
-@app.route('/signup')
-def signin():
-    return render_template('sign-in.html')
-
-
-@app.route('/login')
-def login():
-    return render_template('login-.html')
 
 # 회원가입페이지
 @app.route("/join", methods=["POST"])
@@ -317,4 +277,4 @@ def join():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=5002, debug=True)
