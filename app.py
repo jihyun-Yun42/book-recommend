@@ -1,4 +1,10 @@
-import urllib.request
+
+import datetime
+import jwt
+
+
+SECRET_KEY = 'book'
+
 import certifi
 from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
@@ -14,6 +20,7 @@ app = Flask(__name__)
 import requests
 from bs4 import BeautifulSoup
 
+
 # mongoDB연결코드
 ca = certifi.where()
 
@@ -25,11 +32,17 @@ db = client.book_recommend
 @app.route('/')
 def home():
     return render_template('index.html')
+    
+@app.route('/signup')
+def signin():
+    return render_template('sign-in.html')
+
 
 
 @app.route('/signup')
 def signin():
     return render_template('sign-in.html')
+
 
 
 @app.route('/login')
@@ -108,10 +121,15 @@ def writepage():
     return render_template('write.html')
 
 
-# 베스트셀러 크롤링
-url = 'http://www.yes24.com/main/default.aspx'
-res = requests.get(url)
 
+
+
+
+
+
+#베스트셀러 크롤링
+url = 'http://www.yes24.com/main/default.aspx'
+res =requests.get(url)
 
 @app.route("/bestseller", methods=["GET"])
 def bestseller_get():
@@ -141,6 +159,23 @@ def detail(num):
     num = db.write.find_one({'num': num})['num']
     return render_template('detailpage.html', num=num, title=title, image=image, comment=comment, author=author,
                            nicname=nicname)
+
+
+
+# 상세페이지 이동
+@app.route('/detail/<num>')
+def detail(num):
+    title = db.write.find_one({'num':num})['title']
+    image = db.write.find_one({'num':num})['image']
+    comment = db.write.find_one({'num':num})['comment']
+    author = db.write.find_one({'num':num})['author']
+    nicname = db.write.find_one({'num':num})['nicname']
+    num = db.write.find_one({'num':num})['num']
+    return render_template('detailpage.html',num=num, title=title, image=image, comment=comment, author=author, nicname=nicname)
+
+
+
+
 
 
 # 글작성 페이지
@@ -193,6 +228,7 @@ def detail_delete():
     return jsonify({'msg': '삭제 완료!'})
 
 
+
 # 수정페이지로 이동
 @app.route('/updatepage/<int:num>')
 def updatepage(num):
@@ -238,6 +274,21 @@ def book_card_get():
     book_card = list(db.write.find({}, {'_id': False}))
     return jsonify({'book': book_card})
 
+
+@app.route("/mainpage/detail", methods=["POST"])
+def mainpage_detail():
+    user = db.users.find_one({'name': 'bobby'})
+    return jsonify({'msg': 'POST(기록) 연결 완료!'})
+#메인버튼
+
+@app.route('/signup')
+def signin():
+    return render_template('sign-in.html')
+
+
+@app.route('/login')
+def login():
+    return render_template('login-.html')
 
 # 회원가입페이지
 @app.route("/join", methods=["POST"])

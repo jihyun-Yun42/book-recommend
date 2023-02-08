@@ -7,7 +7,11 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
+<<<<<<< HEAD:.idea/git.iml
     <orderEntry type="jdk" jdkName="Python 3.8" jdkType="Python SDK" />
+=======
+    <orderEntry type="inheritedJdk" />
+>>>>>>> 6ee58d376138fb7da75534a94bfe58113462d32d:.idea/test.iml
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
