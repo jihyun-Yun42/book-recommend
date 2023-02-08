@@ -31,14 +31,6 @@ def home():
 def signin():
     return render_template('sign-in.html')
 
-
-
-@app.route('/signup')
-def signin():
-    return render_template('sign-in.html')
-
-
-
 @app.route('/login')
 def login():
     return render_template('login-.html')
@@ -140,19 +132,6 @@ def bestseller_get():
         db.bestseller.insert_one(doc)
     book_list = list(db.bestseller.find({}, {'_id': False}))
     return jsonify({'bestseller': book_list})
-
-
-# 상세페이지 이동
-@app.route('/detail/<num>')
-def detail(num):
-    title = db.write.find_one({'num': num})['title']
-    image = db.write.find_one({'num': num})['image']
-    comment = db.write.find_one({'num': num})['comment']
-    author = db.write.find_one({'num': num})['author']
-    nicname = db.write.find_one({'num': num})['nicname']
-    num = db.write.find_one({'num': num})['num']
-    return render_template('detailpage.html', num=num, title=title, image=image, comment=comment, author=author,
-                           nicname=nicname)
 
 
 
@@ -275,16 +254,8 @@ def mainpage_detail():
     user = db.users.find_one({'name': 'bobby'})
     return jsonify({'msg': 'POST(기록) 연결 완료!'})
 
-#메인버튼
-
-@app.route('/signup')
-def signin():
-    return render_template('sign-in.html')
 
 
-@app.route('/login')
-def login():
-    return render_template('login-.html')
 
 
 # 회원가입페이지
