@@ -159,10 +159,19 @@ def write():
     image = request.form['image']
     title = request.form['title']
     author = request.form['author']
+
+    count = list(db.write.find({},{'_id':False}))
+    date = count[len(count)-1]
+    num = date['num']
+    num = num + 1
+
+    # num = len(count) + 1
+
     if nicname == '' or comment == '':
         return jsonify({'msgnot': '내용을 입력해주세요'})
     else:
         doc = {
+            'num':num,
             'image': image,
             'comment': comment,
             'nicname': nicname,
