@@ -34,7 +34,7 @@
         <button id="login" type="button" class="btn btn-outline-primary" onclick="window.location.href='/login'">
             로그인
         </button>
-        <button id="sign-up" type="button" class="btn btn-outline-primary" onclick="window.location.href='/signin'">
+        <button id="sign-up" type="button" class="btn btn-outline-primary" onclick="window.location.href='/signup'">
             회원가입
         </button>
     </div>
@@ -86,6 +86,7 @@
     });
 
     function listing() {
+        $('#list').empty()
         $.ajax({
             type: "GET",
             url: "/bestseller",
@@ -118,7 +119,7 @@
                 let title = rows[i].title
                 let author = rows[i].author
                 let image = rows[i].image
-                let num = rows[i].num
+                let _id = rows[i]._id
                 let temp_html = `
                 <div class="col" onclick="detailpage(${num})">
                     <div class="card">
@@ -131,7 +132,7 @@
                                 <span class="card-text">${author}</span>
                                 <p>
                                     <button id="like-box" type="button" class="btn btn-outline-primary">
-                                        <i id="like" class="fa-regular fa-thumbs-up"><span id="count">1</span></i>
+                                        <i id="like" class="fa-regular fa-thumbs-up"><span id="count">1${_id}</span></i>
                                     </button>
                                 </p>
                             </div>
@@ -146,7 +147,7 @@
         })
     }
     function detailpage(num) {
-      location.href="/detail/"+num
+      location.href="/detail/"+ num
     }
 </script>
 </body>

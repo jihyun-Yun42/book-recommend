@@ -127,7 +127,7 @@
             </div>
             <div class="bookdesc">
                 <div>
-                    <p id="num">{{num}}</p>
+                    <p id="num" style="font-size: 0;">{{num}}</p>
                     <h3 id="booktitle">{{ title }}</h3>
                 </div>
                 <div>
@@ -149,8 +149,8 @@
                 {{comment}}
             </div>
             <div class="comment">
-                <input id="comment" type="text" class="form-control" placeholder="댓글달기" aria-label="댓글달기" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">작성</button>
+                <input id="subcommentId" type="text" class="form-control" placeholder="댓글달기" aria-label="댓글달기" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="subcomment()">작성</button>
             </div>
             <div class="commentbox" id="commentbox">
                 <div class="card-body">
@@ -163,21 +163,24 @@
     </div>
 
 <script>
+    
     let num = document.getElementById('num').textContent
    function update(){
-    window.open("/updatepage/"+num, "a", "width=1000, height=800, left=100, top=50");
+        window.open("/updatepage/"+num, "a", "width=1000, height=800, left=100, top=50");
    }
 
    function deletepage() {
-    $.ajax({
-        type: "DELETE",
-        url: "/detailpage",
-        data: {num:num},
-        success: function(response){
-            location.href="/"
-        }
-    })
+        $.ajax({
+            type: "DELETE",
+            url: "/detailpage",
+            data: {num:num},
+            success: function(response){
+                alert(response['msg'])
+                location.href="/"
+            }
+        })
    }
+
 </script>
 </body>
 
