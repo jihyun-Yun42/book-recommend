@@ -20,19 +20,15 @@
       let comment = $('#comment').val()
       let title = $('#title').val()
       let author = $('#author').val()
+      let num = $('#num').val()
 
       $.ajax({
-          type: "POST",
-          url: "/write",
-          data: {image: image, nicname:nicName, comment:comment, title:title, author:author},
+          type: "PUT",
+          url: "/updatepage",
+          data: {image: image, nicname:nicName, comment:comment, title:title, author:author, num:num},
           success: function (response) {
-            if(response['msgnot']){
-              alert(response['msgnot'])
-            } else {
               alert(response["msg"])
-              window.open('','_self').close();
-              opener.parent.location.reload();
-            }
+              location.href="/detail/" + num
           }
       });
     }
@@ -43,7 +39,8 @@
 <body>
   <div class="box1">
     <div>
-      <input type="text" placeholder="닉네임" class="nicname form-control" id="nicName">
+      <textarea id="num" style="font-size: 0;">{{num}}</textarea>
+      <textarea type="text" placeholder="닉네임" class="nicname form-control" id="nicName">{{nicname}}</textarea>
     </div>
 
     <a onclick="post()">작성하기</a>
@@ -52,11 +49,11 @@
 
   <div class="box2">
     <div class="urlBox">
-      <input type="url" class="urlBoxIn form-control" id="image" placeholder="이미지 url">
+      <textarea type="url" class="urlBoxIn form-control" id="image" placeholder="이미지 url">{{image}}</textarea>
     </div>
-    <input type="url" class="urlBoxIn form-control" id="title" placeholder="책 이름">
-    <input type="url" class="urlBoxIn form-control" id="author" placeholder="저자">
-    <textarea class="writeBox form-control" placeholder="추천이유를 적어주세요" id="comment"></textarea>
+    <textarea type="text" class="urlBoxIn form-control" id="title" placeholder="책 이름">{{title}}</textarea>
+    <textarea type="text" class="urlBoxIn form-control" id="author" placeholder="저자">{{author}}</textarea>
+    <textarea class="writeBox form-control" placeholder="추천이유를 적어주세요" id="comment">{{comment}}</textarea>
 
   </div>
 

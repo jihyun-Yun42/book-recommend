@@ -163,28 +163,18 @@
     </div>
 
 <script>
-   function update(){
-    $.ajax({
-        type:"GET",
-        url: "/detail/",
-        data:{},
-        success: function (response) {
-            let num = response["num"]
-            location.href="/updatepage/"+num
-
-        }
-    })
-   }
-   function deletepage() {
     let num = document.getElementById('num').textContent
+   function update(){
+    window.open("/updatepage/"+num, "a", "width=1000, height=800, left=100, top=50");
+   }
 
+   function deletepage() {
     $.ajax({
         type: "DELETE",
         url: "/detailpage",
         data: {num:num},
         success: function(response){
-            alert(response['msg'])
-            opener.parent.location.reload();
+            location.href="/"
         }
     })
    }
