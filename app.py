@@ -21,15 +21,16 @@ def signin():
     return render_template('sign-in.html')
 
 
-@app.route('/detail/<int:num>')
+@app.route('/detail/<int:num>', methods=["GET"])
 def detail(num):
     title = db.write.find_one({'num':num})['title']
     image = db.write.find_one({'num':num})['image']
     comment = db.write.find_one({'num':num})['comment']
     author = db.write.find_one({'num':num})['author']
     nicname = db.write.find_one({'num':num})['nicname']
+    num = db.write.find_one({'num':num})['num']
 
-    return render_template('detailpage.html', title=title, image=image, comment=comment, author=author, nicname=nicname)
+    return render_template('detailpage.html',num=num, title=title, image=image, comment=comment, author=author, nicname=nicname)
 
 
 @app.route('/login')
@@ -40,6 +41,13 @@ def login():
 @app.route('/writepage')
 def writepage():
     return render_template('write.html')
+
+
+@app.route('/updatepage/<int:num>')
+def updatepage(num):
+    num = db.write.find_one({'num':num})['num']
+    return render_template('update.html')
+
 
 
 # 글작성 페이지
@@ -92,6 +100,8 @@ def detail_post():
 
 @app.route("/detailpage", methods=["DELETE"])
 def detail_delete():
+    num = request.form['num']
+    db.write.delete_one({'num':int(num)})
     return jsonify({'msg': '삭제 완료!'})
 
 

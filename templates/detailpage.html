@@ -127,6 +127,7 @@
             </div>
             <div class="bookdesc">
                 <div>
+                    <p id="num">{{num}}</p>
                     <h3 id="booktitle">{{ title }}</h3>
                 </div>
                 <div>
@@ -140,8 +141,8 @@
                     <p id="nickname">{{nicname}}</p>
                 </div>
                 <div class="delete">
-                    <button id="ubutton" type="button" class="btn btn-outline-dark">수정</button>
-                    <button id="dbutton" type="button" class="btn btn-outline-dark">삭제</button>
+                    <button id="ubutton" type="button" class="btn btn-outline-dark" onclick="update()">수정</button>
+                    <button id="dbutton" type="button" class="btn btn-outline-dark" onclick="deletepage()">삭제</button>
                 </div>
             </div>
             <div class="recommend" id="recommend">
@@ -162,8 +163,31 @@
     </div>
 
 <script>
-   
+   function update(){
+    $.ajax({
+        type:"GET",
+        url: "/detail/",
+        data:{},
+        success: function (response) {
+            let num = response["num"]
+            location.href="/updatepage/"+num
 
+        }
+    })
+   }
+   function deletepage() {
+    let num = document.getElementById('num').textContent
+
+    $.ajax({
+        type: "DELETE",
+        url: "/detailpage",
+        data: {num:num},
+        success: function(response){
+            alert(response['msg'])
+            opener.parent.location.reload();
+        }
+    })
+   }
 </script>
 </body>
 
