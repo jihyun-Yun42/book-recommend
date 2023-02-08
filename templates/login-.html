@@ -56,7 +56,7 @@
                     if (response['result'] == 'success') {
                         $.cookie('mytoken', response['token']);
                         alert('로그인 완료!')
-                        location.href = '/main-in'
+                        location.href = '/'
                     } else {
                         alert(response['msg'])
                     }
@@ -92,7 +92,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                         <label for="input-pw">비밀번호</label>
-                        <input type="text" class="form-control" id="input-pw" placeholder="비밀번호를 입력해주세요" value="" required>
+                        <input type="password" class="form-control" id="input-pw" placeholder="비밀번호를 입력해주세요" value="" required>
                 </div>
                 <div>
                 </div>

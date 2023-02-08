@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01c925f4a1d0a121d371f345bd0b2196e96e6f5f
 import certifi
 from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
@@ -25,12 +29,19 @@ db = client.book_recommend
 @app.route('/')
 def home():
     return render_template('index.html')
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 01c925f4a1d0a121d371f345bd0b2196e96e6f5f
 @app.route('/signup')
 def signin():
     return render_template('sign-in.html')
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 01c925f4a1d0a121d371f345bd0b2196e96e6f5f
 @app.route('/login')
 def login():
     return render_template('login-.html')
@@ -258,6 +269,17 @@ def book_card_get():
 
 
 
+<<<<<<< HEAD
+=======
+@app.route("/mainpage/detail", methods=["POST"])
+def mainpage_detail():
+    user = db.users.find_one({'name': 'bobby'})
+    return jsonify({'msg': 'POST(기록) 연결 완료!'})
+
+
+
+
+>>>>>>> 01c925f4a1d0a121d371f345bd0b2196e96e6f5f
 
 # 회원가입페이지
 @app.route("/join", methods=["POST"])
@@ -286,4 +308,8 @@ def join():
 
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     app.run('0.0.0.0', port=5002, debug=True)
+=======
+    app.run('0.0.0.0', port=5000, debug=True)
+>>>>>>> 01c925f4a1d0a121d371f345bd0b2196e96e6f5f
