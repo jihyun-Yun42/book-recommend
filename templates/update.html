@@ -12,7 +12,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../static/write.css">
+  <link rel="stylesheet" href="../static/update.css">
+  <link rel="stylesheet" href="/static/total.css">
   <script>
     function post() {
       let image = $('#image').val()
@@ -28,7 +29,8 @@
           data: {image: image, nicname:nicName, comment:comment, title:title, author:author, num:num},
           success: function (response) {
               alert(response["msg"])
-              location.href="/detail/" + num
+              window.open('','_self').close();
+              opener.parent.location.reload();
           }
       });
     }
@@ -37,7 +39,8 @@
 </head>
   
 <body>
-  <div class="box1">
+  <div class="main-box">
+    <div class="box1">
     <div>
       <textarea id="num" style="font-size: 0;">{{num}}</textarea>
       <textarea type="text" placeholder="닉네임" class="nicname form-control" id="nicName">{{nicname}}</textarea>
@@ -56,6 +59,8 @@
     <textarea class="writeBox form-control" placeholder="추천이유를 적어주세요" id="comment">{{comment}}</textarea>
 
   </div>
+</div>
+  
 
 </body>
 

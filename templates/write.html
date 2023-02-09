@@ -13,6 +13,7 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../static/write.css">
+  <link rel="stylesheet" href="/static/total.css">
   <script>
     function post() {
       let image = $('#image').val()
@@ -41,23 +42,22 @@
 </head>
   
 <body>
-  <div class="box1">
-    <div>
-      <input type="text" placeholder="닉네임" class="nicname form-control" id="nicName">
-    </div>
+  <div class="main-box">
+      <div class="box1">
+          <div>
+            <input type="text" placeholder="닉네임" class="nicname form-control" id="nicName">
+          </div>
+          <a onclick="post()">작성하기</a>
+      </div>
 
-    <a onclick="post()">작성하기</a>
-
-  </div>
-
-  <div class="box2">
-    <div class="urlBox">
-      <input type="url" class="urlBoxIn form-control" id="image" placeholder="이미지 url">
-    </div>
-    <input type="url" class="urlBoxIn form-control" id="title" placeholder="책 이름">
-    <input type="url" class="urlBoxIn form-control" id="author" placeholder="저자">
-    <textarea class="writeBox form-control" placeholder="추천이유를 적어주세요" id="comment"></textarea>
-
+      <div class="box2">
+        <div class="urlBox">
+            <input type="url" class="urlBoxIn form-control" id="image" placeholder="이미지 url">
+        </div>
+        <input type="url" class="urlBoxIn form-control" id="title" placeholder="책 이름">
+        <input type="url" class="urlBoxIn form-control" id="author" placeholder="저자">
+        <textarea class="writeBox form-control" placeholder="추천이유를 적어주세요" id="comment"></textarea>
+      </div>
   </div>
 
 </body>

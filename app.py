@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 01c925f4a1d0a121d371f345bd0b2196e96e6f5f
 import certifi
 from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
@@ -29,52 +25,32 @@ db = client.book_recommend
 @app.route('/')
 def home():
     return render_template('index.html')
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 01c925f4a1d0a121d371f345bd0b2196e96e6f5f
 @app.route('/signup')
 def signin():
-    return render_template('sign-in.html')
+    return render_template('signup.html')
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 01c925f4a1d0a121d371f345bd0b2196e96e6f5f
 @app.route('/login')
 def login():
-    return render_template('login-.html')
+    return render_template('login.html')
 
 
-# 회원가입페이지
-@app.route("/api/signup", methods=["POST"])
+# 회원가입
+@app.route('/api/signup', methods=['POST'])
 def api_register():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
-    pw2_receive = request.form['pw2_give']
-    nick_receive = request.form['nick_give']
-    mail_receive = request.form['mail_give']
-    address_receive = request.form['address_give']
-    juso_receive = request.form['juso_give']
+    nickname_receive = request.form['nickname_give']
+
+
 
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
-    pw2_hash = hashlib.sha256(pw2_receive.encode('utf-8')).hexdigest()
 
-    result = db.join.find_one({'id': id_receive})
+    result = db.user.find_one({'id': id_receive})
+
     if result is not None:
         return jsonify({'result': 'fail', 'msg': '이미 존재하는 ID입니다!'})
-
     else:
-        db.join.insert_one({
-            'id': id_receive,
-            'pw': pw_hash,
-            'pw2': pw2_hash,
-            'nick': nick_receive,
-            'mail': mail_receive,
-            'address': address_receive,
-            'juso': juso_receive
-        })
+        db.user.insert_one({'id': id_receive, 'pw': pw_hash, 'nick': nickname_receive})
         return jsonify({'result': 'success'})
 
 
@@ -84,9 +60,11 @@ def api_login():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
 
+
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
 
-    result = db.join.find_one({'id': id_receive, 'pw': pw_hash})
+
+    result = db.user.find_one({'id': id_receive, 'pw': pw_hash})
 
     if result is not None:
         payload = {
@@ -95,23 +73,28 @@ def api_login():
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
+
         return jsonify({'result': 'success', 'token': token})
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
+
 
 
 @app.route('/api/isAuth', methods=['GET'])
 def api_valid():
     token_receive = request.cookies.get('mytoken')
     try:
+
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        userinfo = db.join.find_one({'id': payload['id']}, {'_id': 0})
+
+        userinfo = db.user.find_one({'id': payload['id']}, {'_id': 0})
         return jsonify({'result': 'success', 'nickname': userinfo['nick']})
     except jwt.ExpiredSignatureError:
+
         return jsonify({'result': 'fail', 'msg': '로그인 시간이 만료되었습니다.'})
     except jwt.exceptions.DecodeError:
-        return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
 
+        return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
 
 @app.route('/writepage')
 def writepage():
@@ -170,17 +153,28 @@ def write():
     image = request.form['image']
     title = request.form['title']
     author = request.form['author']
-
     count = list(db.write.find({},{'_id':False}))
-    date = count[len(count)-1]
-    num = date['num']
-    num = num + 1
 
     # num = len(count) + 1
 
-    if nicname == '' or comment == '':
+    if count == []:
+        num = 1
+        doc = {
+            'num': num,
+            'image': image,
+            'comment': comment,
+            'nicname': nicname,
+            'title': title,
+            'author': author
+        }
+        db.write.insert_one(doc)
+        return jsonify({'msg': '작성완료'})
+    elif nicname == '' or comment == '' or image == '' or title =='' or author=='':
         return jsonify({'msgnot': '내용을 입력해주세요'})
     else:
+        ddd = count[len(count) - 1]
+        num = ddd['num']
+        num = num + 1
         doc = {
             'num':num,
             'image': image,
@@ -190,7 +184,7 @@ def write():
             'author': author
         }
         db.write.insert_one(doc)
-    return jsonify({'msg': '작성완료'})
+        return jsonify({'msg': '작성완료'})
 
 
 # 상세페이지
@@ -269,17 +263,6 @@ def book_card_get():
 
 
 
-<<<<<<< HEAD
-=======
-@app.route("/mainpage/detail", methods=["POST"])
-def mainpage_detail():
-    user = db.users.find_one({'name': 'bobby'})
-    return jsonify({'msg': 'POST(기록) 연결 완료!'})
-
-
-
-
->>>>>>> 01c925f4a1d0a121d371f345bd0b2196e96e6f5f
 
 # 회원가입페이지
 @app.route("/join", methods=["POST"])
@@ -308,8 +291,4 @@ def join():
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
     app.run('0.0.0.0', port=5002, debug=True)
-=======
-    app.run('0.0.0.0', port=5000, debug=True)
->>>>>>> 01c925f4a1d0a121d371f345bd0b2196e96e6f5f

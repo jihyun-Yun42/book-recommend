@@ -1,32 +1,41 @@
+* {
+  background-color: #bcaaa4;
+}
+
+
 .box1 {
-  width: 1000px;
+  width: 75%;
   height: 50px;
 
   display: flex;
   flex-direction: row;
   align-items: center;
 
-  margin: auto;
-
+  margin: 20px auto 0px auto;
 }
 .nicname {
-  width: 500px;
-  margin: 20px auto 20px 50px;
+  width: 100%;
+  margin: 20px auto 0px 0px;
   padding: 5px;
 }
+
+textarea {
+  resize: none;
+}
+
 .nicname:hover {
   border: 2px solid #afafaf;
 }
 a {
   float: right;
-  margin-right: 50px;
   margin-left: auto;
   
   text-decoration: none;
   border: 1px solid #afafaf;
   border-radius: 10px;
   color: #afafaf;
-  padding: 2px 5px 2px 5px;
+  padding: 2px 5px;
+  background-color: white;
 }
 a:hover {
   border: 1.5px solid #6c6c6c;
@@ -34,28 +43,28 @@ a:hover {
 }
 
 .box2 {
-  width: 1000px;
-  height: 800px;
+  width: 75%;
+  height: 670px;
   margin-right: auto;
   margin-left: auto;
+  align-items: center;
 }
 
 .urlBoxIn {
-  width: 900px;
+  width: 75%px;
   height: 40px;
 
-  margin: 10px auto 20px auto;
+  margin: 17px auto 20px auto;
 }
 .urlBoxIn:hover {
-  border: 2px solid #afafaf;
+  border: 2px solid #381f1f;
 }
-.writeBox {
-  width: 900px;
-  height: 600px;
 
-  margin-top: 10px;
-  margin-right: auto;
-  margin-left: auto;
+.writeBox {
+  width: 75%x;
+  height: 450px;
+
+  margin: 10px auto 0 auto;
 }
 .writeBox:hover {
   border: 2px solid #afafaf;
